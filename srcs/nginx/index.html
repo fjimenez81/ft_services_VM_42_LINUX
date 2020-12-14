@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT_SERVICES</title>
+</head>
+<body>
+    <div class="h1"
+    style="text-align: center;
+            font-size: 50px;">FT_SERVICES</div>
+    <ul style="text-align: center;">
+        <li style="padding-top: 20px;">
+            <a style="font-size: 24px;" target="_blank"
+                href="http://192.168.99.112">Nginx</a>
+        </li>
+        <li style="padding-top: 20px;">
+            <a style="font-size: 24px;" target="_blank"
+                href="http://192.168.99.114:3000">Grafana</a>
+                <li style="padding-top: 20px;">grafana: admin -- password</li>
+        </li>
+        <li style="padding-top: 20px;">
+            <a style="font-size: 24px;" target="_blank"
+                href="http://192.168.99.120:5050">Wordpress</a>
+                <li style="padding-top: 20px;">wordpress: ferfox_1 -- ferfox_1</li>
+                <li style="padding-top: 20px;">wordpress: user_1 -- 2020</li>
+                <li style="padding-top: 20px;">wordpress: user_2 -- 2121</li>
+        </li>
+        <li style="padding-top: 20px;">
+            <a style="font-size: 24px;" target="_blank"
+                href="http://192.168.99.113:5000">Phpmyadmin</a>
+                <li style="padding-top: 20px;">phpmyadmin: ferfox -- 1234</li>
+        </li>
+    </ul>
+    <div class="h1"
+    style="text-align: center;
+            font-size: 40px;margin-top: 50px;">NGINX TESTS</div>
+    <ul style="text-align: center;">
+        <li style="padding-top: 20px;">
+            curl -I http://192.168.99.112
+        </li>
+        <li style="padding-top: 20px;">
+            ssh -p 22 ssh_admin@192.168.99.112 -- ssh_admin -- 9090
+        </li>
+    </ul>
+    <div class="h1"
+    style="text-align: center;
+            font-size: 40px;margin-top: 50px;">Kill Process</div>
+     <ul style="text-align: center;">
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/nginx-deployment -- pkill sshd
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/wordpress-deployment -- pkill php
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/influxdb-deployment -- pkill influxd
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/phpmyadmin-deployment -- pkill php
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/grafana-deployment -- pkill grafana-server
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/ftps-deployment -- pkill vsftpd
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/mysql-deployment -- pkill mysql
+        </li>
+        <li style="padding-top: 20px;">
+            kubectl exec deploy/nginx-deployment -- pkill nginx
+        </li>
+    </ul>
+    <div class="h1"
+    style="text-align: center;
+            font-size: 40px;margin-top: 50px;">FTPS TESTS</div>
+    <ul style="text-align: center;">
+        <li style="padding-top: 20px;">
+            curl --ftp-ssl --insecure --user ferfox:hola ftp://192.168.99.121:21
+        </li>
+        <li style="padding-top: 20px;">
+            touch filetest
+        </li>
+        <li style="padding-top: 20px;">
+            Upload file: curl -T filetest --ftp-ssl --insecure --user ferfox:hola ftp://192.168.99.121:21
+        </li>
+        <li style="padding-top: 20px;">
+            Download file: curl -O --ftp-ssl --insecure --user ferfox:hola ftp://192.168.99.121:21/filetest
+        </li>
+    </ul>
+</body>
+</html>
